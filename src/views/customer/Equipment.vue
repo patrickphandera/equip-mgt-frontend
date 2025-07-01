@@ -111,7 +111,7 @@
             </v-col>
             <v-col cols="12" sm="4">
               <v-select label="Map" v-if="actualLocation && form.location" @click="mapVisible = !mapVisible" block
-                class="p-4  text-lowercase   text-capitalize" prepend-inner-icon="mdi-map-marker-check">
+                class="p-4  text-lowercase   text-capitalize" prepend-inner-icon="mdi-check-circle">
 
               </v-select>
               <v-select label="Map" v-if="!(actualLocation &&form.location)" @click="mapVisible = !mapVisible" block
