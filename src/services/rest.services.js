@@ -5,7 +5,7 @@ const API_BASE_URL = 'https://audio-visual-backend.onrender.com'
 // const API_BASE_URL = 'http://127.0.0.1:8000'
 import axios from 'axios';
 let token = localStorage.getItem('token');
-token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjdkN2Q0ZjRhMDEwMTRlNmMyNjFmNGY3IiwiZXhwIjoxNzcxMjI4NDA0fQ.4GO5klrnkPyUTUNQsSQAQJvUYBuchxbekmzL-CU-EvY'
+token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImZpcnN0bmFtZSI6IlBhdHJpY2siLCJsYXN0bmFtZSI6IlBoYW5kZXJhIiwicGhvbmUiOiIwODg1MDkyMTQ4IiwiZ2VuZGVyIjoiTWFsZSIsInJvbGUiOiJVc2VyIiwiZW1haWwiOiJwYXRyaWNrcGhhbmRlcmFqZ0BnbWFpbC5jb20iLCJkaXN0cmljdCI6IkxpbG9uZ3dlIiwibG9jYXRpb25JZCI6Imxsdy1jZW50cmFsLTEiLCJ2ZXJpZmllZEVtYWlsIjp0cnVlLCJwYXNzd29yZCI6IiIsImNyZWF0ZWQiOiIyMDI1LTA3LTAxIDE2OjAwOjE4LjM0NjIwNyIsInVwZGF0ZWQiOiIyMDI1LTA3LTAxIDE2OjAwOjE4LjM0NjIzNCIsImlkIjoiNjg2NDA2MTIzODRkM2VhNmMyNzhiMmI3In0sImV4cCI6MTc4MDQxNjA0M30.yqVY4wpfSOlvkcbZqMv3mxTKxl3zpFrDTFMBEYz2tbc'
 
 export const BACKENDURL = API_BASE_URL
 export async function postData(data, endpoint) {
