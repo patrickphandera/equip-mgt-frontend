@@ -12,7 +12,7 @@
         <v-btn icon="mdi-unfold-more-horizontal" variant="dense">2/3</v-btn>
       </div>
       <v-row fill class="mt-2">
-        <v-col :cols="12 / selectedEquipments.length" v-for="(i, index) in [selectedEquipments[0]]" :key="index"
+        <v-col :cols="12 / selectedEquipments.length" v-for="(i, index) in selectedEquipments" :key="index"
           v-show="i?.selected">
           <v-card class="elevation-0 selected mx-auto">
             <v-img class="align-center pb-10" height="150px" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
