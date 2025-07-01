@@ -55,15 +55,15 @@
       <div class="d-flex mt-2">
         <v-btn
           class="font-weight-medium text-primary underline cursor-pointer elevation-1 px-2 mx-1 text-lowercase text-caption"
-          to="/booking-officer/equipments-sets">Equipment sets</v-btn>
+          to="/chief-technician/equipments-sets">Equipment sets</v-btn>
         <v-btn
           class="font-weight-medium text-primary underline cursor-pointer elevation-1 pa-1 ml-4 text-lowercase text-caption"
-          to="/booking-officer/equipments-categories">Equipment categories</v-btn>
+          to="/chief-technician/equipments-categories">Equipment categories</v-btn>
         <v-btn
           class="font-weight-medium text-primary px-2 cursor-pointer elevation-1 pa-1 mx-4 text-lowercase text-caption"
-          to="/booking-officer/equipments-conditions">Equipment conditions</v-btn>
+          to="/chief-technician/equipments-conditions">Equipment conditions</v-btn>
         <v-btn class="font-weight-medium text-primary px-2 cursor-pointer elevation-1 pa-1 text-lowercase text-caption"
-          to="/booking-officer/equipments-availabilities">Equipment availability</v-btn>
+          to="/chief-technician/equipments-availabilities">Equipment availability</v-btn>
       </div>
     </div>
 
