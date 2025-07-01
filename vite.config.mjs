@@ -4,6 +4,7 @@ import Vue from '@vitejs/plugin-vue'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
 import VueRouter from 'unplugin-vue-router/vite'
+import path from 'path';
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -59,6 +60,14 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    fs: {
+      allow: [
+        // Allow serving files from project root
+        './',
+        // Explicitly allow node_modules font path
+        path.resolve(__dirname, 'node_modules/@mdi/font/fonts'),
+      ]
+    }
   },
   css: {
     preprocessorOptions: {

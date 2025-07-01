@@ -10,7 +10,7 @@
               Important Links
             </div>
             <div class="text-caption d-flex ">
-              <v-btn to="/booking-officer/equipments" prepend-icon="mdi-keyboard-backspace" class="mr-4 mt-1"
+              <v-btn to="/chief-technician/equipments" prepend-icon="mdi-keyboard-backspace" class="mr-4 mt-1"
                 size="small"></v-btn> Equipments Categories
             </div>
           </div>
