@@ -27,11 +27,6 @@
                 </div>
               </div>
               <div class="d-flex pa-2">
-                <!-- <v-btn stacked class="bg-green-darken-4">
-                  <v-badge color="transparent"> MWK </v-badge>
-                  <div class="text-h4 font-weight-black">{{ i.price }}</div>
-                  <div class="text-overline">Price</div>
-                </v-btn> -->
                 <v-btn stacked class="bg-green-darken-4 ml-4 ">
                   <v-badge color="transparent"> MWK </v-badge>
                   <div class="text-h4 font-weight-black">{{ i?.price }}</div>
@@ -39,20 +34,17 @@
                 </v-btn>
               </div>
             </v-img>
-
           </v-card>
         </v-col>
         <v-col :cols="12 / selectedEquipments.length" v-for="(i, index) in [selectedEquipments[0]]" :key="index"
           v-show="i?.selected">
           <v-card class="elevation-0 selected mx-auto" height="150px">
-
-
             <div class="mx-2 mt-1 font-weight-medium text-overline">
               Cost calculator
             </div>
             <div class="d-flex justify-space-between pr-4">
               <div class="px-2">
-                <div class="d-flex border-b">
+                <div class="d-flex">
                   <div class="text-caption font-weight-medium">
                     Equipment Sets Cost:
                   </div>
@@ -60,7 +52,7 @@
                     1 Sets X 20.00 MWK = 20.00 MWK
                   </div>
                 </div>
-                <div class="d-flex border-b">
+                <div class="d-flex">
                   <div class="text-caption font-weight-medium">
                     Tranport Cost:
                   </div>
@@ -98,33 +90,31 @@
         <v-form ref="form" v-model="formValid">
           <v-row dense>
             <v-col cols="12" sm="4">
-              <v-text-field density="compact" label="Contact person's name" v-model="form.name" />
+              <v-text-field label="Contact person's name" v-model="form.name" />
             </v-col>
             <v-col cols="12" sm="4">
-              <v-select density="compact" label="District" v-model="form.district" :items="['Mzimba']" />
+              <v-select label="District" v-model="form.district" :items="['Mzimba']" />
             </v-col>
             <v-col cols="12" sm="4">
-              <v-select density="compact" label="Area in a district" v-model="form.location" :items="locationNames" />
+              <v-select label="Area in a district" v-model="form.location" :items="locationNames" />
             </v-col>
 
             <v-col cols="12" sm="12">
-              <v-textarea density="compact" auto-grow label="Description of Location" v-model="form.description"
-                rows="1" />
+              <v-textarea auto-grow label="Description of Location" v-model="form.description" rows="1" />
             </v-col>
             <v-col cols="12" sm="8">
-              <v-select density="compact" auto-grow label="Number of days for the event" v-model="form.numberOfDays"
-                rows="1" :items="['1','2','3','4','5','6','7']" />
+              <v-select auto-grow label="Number of days for the event" v-model="form.numberOfDays" rows="1"
+                :items="['1','2','3','4','5','6','7']" />
             </v-col>
             <v-col cols="12" sm="4">
-              <v-select density="compact" label="You need our transport vehicle?" v-model="form.transportNeeded"
-                :items="['Yes','No']" />
+              <v-select label="You need our transport vehicle?" v-model="form.transportNeeded" :items="['Yes','No']" />
             </v-col>
             <v-col cols="12" sm="4">
-              <v-btn v-if="actualLocation && form.location" color="grey-darken-3" size="large"
-                @click="mapVisible = !mapVisible" block
-                class="p-4  text-black text-lowercase  text-grey-lighten-4 text-capitalize" prepend-icon="mdi-pin">
+              <v-select label="Map" v-if="actualLocation && form.location" size="large" b
+                @click="mapVisible = !mapVisible" block class="p-4  text-black text-lowercase   text-capitalize"
+                prepend-inner-icon="mdi-pin">
                 Add map
-              </v-btn>
+              </v-select>
               <v-btn v-if="!(actualLocation &&form.location)" color="grey-darken-3" size="large"
                 @click="mapVisible = !mapVisible" block class="p-4  text-black text-capitalize text-lighten-grey"
                 prepend-icon="mdi-pin-outline">
@@ -147,11 +137,11 @@
               </v-dialog>
             </v-col>
             <v-col cols="12" sm="4">
-              <v-text-field density="compact" label="Date" v-model="form.date" type="date" :rules="[rules.required]" />
+              <v-text-field label="Date" v-model="form.date" type="date" :rules="[rules.required]" />
             </v-col>
 
             <v-col cols="12" sm="4">
-              <v-text-field density="compact" label="Phone" v-model="form.phone" />
+              <v-text-field label="Phone" v-model="form.phone" />
             </v-col>
           </v-row>
         </v-form>
@@ -323,8 +313,11 @@
 </script>
 <style scoped>
   .scroll-container {
-    height: 500px;
-    overflow-y: auto;
+    height: 520px;
+    overflow: auto;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
   }
 
   .selected {
