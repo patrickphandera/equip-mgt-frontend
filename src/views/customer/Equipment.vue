@@ -110,16 +110,13 @@
               <v-select label="You need our transport vehicle?" v-model="form.transportNeeded" :items="['Yes','No']" />
             </v-col>
             <v-col cols="12" sm="4">
-              <v-select label="Map" v-if="actualLocation && form.location" size="large" b
-                @click="mapVisible = !mapVisible" block class="p-4  text-black text-lowercase   text-capitalize"
-                prepend-inner-icon="mdi-pin">
-                Add map
+              <v-select label="Map" v-if="actualLocation && form.location" @click="mapVisible = !mapVisible" block
+                class="p-4  text-lowercase   text-capitalize" prepend-inner-icon="mdi-map-marker-check">
+
               </v-select>
-              <v-btn v-if="!(actualLocation &&form.location)" color="grey-darken-3" size="large"
-                @click="mapVisible = !mapVisible" block class="p-4  text-black text-capitalize text-lighten-grey"
-                prepend-icon="mdi-pin-outline">
-                Add map
-              </v-btn>
+              <v-select label="Map" v-if="!(actualLocation &&form.location)" @click="mapVisible = !mapVisible" block
+                class="p-4  text-black text-capitalize " prepend-inner-icon="mdi-map-marker">
+              </v-select>
               <v-dialog v-model="mapVisible" width="1200" height="600">
                 <v-card>
                   <v-card-title>Select Event Location</v-card-title>
