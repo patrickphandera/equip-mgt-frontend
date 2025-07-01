@@ -1,0 +1,9 @@
+localAreas: [
+    { name: "Chibavi", lat: -11.4415, lng: 34.0082, radius: 0.01 },
+    { name: "Mchengautuba", lat: -11.4553, lng: 34.0055, radius: 0.012 },
+    { name: "Luwinga", lat: -11.4538, lng: 34.0233, radius: 0.01 },
+    { name: "Zolozolo", lat: -11.4382, lng: 34.0141, radius: 0.009 },
+    { name: "Katoto", lat: -11.4461, lng: 34.0254, radius: 0.009 },
+    { name: "Masasa", lat: -11.4665, lng: 34.0103, radius: 0.009 },
+    { name: "Mzuzu City Centre", lat: -11.4655, lng: 34.0207, radius: 0.007 }
+  ]

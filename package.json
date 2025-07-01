@@ -1,0 +1,36 @@
+{
+  "name": "vuetify-project",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --fix"
+  },
+  "dependencies": {
+    "@mdi/font": "7.4.47",
+    "axios": "^1.9.0",
+    "paychangu-js": "^2.1.2",
+    "roboto-fontface": "*",
+    "uuid": "^11.1.0",
+    "vue": "^3.5.13",
+    "vue3-google-map": "^0.22.0",
+    "vue3-perfect-scrollbar": "^2.0.0",
+    "vuetify": "^3.8.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "eslint": "^9.23.0",
+    "eslint-config-vuetify": "^3.0.3",
+    "globals": "^16.0.0",
+    "sass-embedded": "^1.86.3",
+    "unplugin-fonts": "^1.3.1",
+    "unplugin-vue-components": "^28.4.1",
+    "unplugin-vue-router": "^0.12.0",
+    "vite": "^6.2.2",
+    "vite-plugin-vuetify": "^2.1.1",
+    "vue-router": "^4.5.0"
+  }
+}
