@@ -5,7 +5,7 @@ const API_BASE_URL = 'https://audio-visual-backend.onrender.com'
 let token = localStorage.getItem('token');
 token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImZpcnN0bmFtZSI6IlBhdHJpY2siLCJsYXN0bmFtZSI6IlBoYW5kZXJhIiwicGhvbmUiOiIwODg1MDkyMTQ4IiwiZ2VuZGVyIjoiTWFsZSIsInJvbGUiOiJVc2VyIiwiZW1haWwiOiJwYXRyaWNrcGhhbmRlcmFqZ0BnbWFpbC5jb20iLCJkaXN0cmljdCI6IkxpbG9uZ3dlIiwibG9jYXRpb25JZCI6Imxsdy1jZW50cmFsLTEiLCJ2ZXJpZmllZEVtYWlsIjp0cnVlLCJwYXNzd29yZCI6IiIsImNyZWF0ZWQiOiIyMDI1LTA3LTAxIDE2OjAwOjE4LjM0NjIwNyIsInVwZGF0ZWQiOiIyMDI1LTA3LTAxIDE2OjAwOjE4LjM0NjIzNCIsImlkIjoiNjg2NDA2MTIzODRkM2VhNmMyNzhiMmI3In0sImV4cCI6MTc4MDQxNjA0M30.yqVY4wpfSOlvkcbZqMv3mxTKxl3zpFrDTFMBEYz2tbc'
 
-export default async function makePayment(data) {
+export default async function makePayment(data, totalCost) {
   try {
     console.log(data);
 
@@ -20,7 +20,7 @@ export default async function makePayment(data) {
     const lat = localStorage.getItem('lat');
     const long = localStorage.getItem('long');
     const equipments = localStorage.getItem('equipments');
-    const amount = 60;
+    const amount = Number(totalCost);
     const user_type = 'customers';
     data.id = id
     data.lat = lat

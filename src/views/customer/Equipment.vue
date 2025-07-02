@@ -73,7 +73,7 @@
                 <div class="d-flex">
                   <div class="text-overline  font-weight-medium">
                     TOTAL
-                    COST:{{calculateTotals(selectedEquipments)+calculateTransportFee(selectedEquipments)+calculateTechnicianAllowanceTotal(selectedEquipments)}}
+                    COST:{{totalCost}}
                     MWK
                   </div>
                 </div>
@@ -234,7 +234,12 @@
       };
     },
     computed: {
-
+      totalCost() {
+        const equipmentTotal = this.calculateTotals(this.selectedEquipments);
+        const transportFee = this.calculateTransportFee(this.selectedEquipments);
+        const technicianAllowance = this.calculateTechnicianAllowanceTotal(this.selectedEquipments);
+        return equipmentTotal + transportFee + technicianAllowance;
+      },
       selectedEquipments() {
         return this.equipments.filter(e => e?.selected);
       },
@@ -273,27 +278,15 @@
         if (!locationObj) return 0;
         const transportFee = locationObj.transportFee;
         const allNeedTransport = items.every(item => item.transportNeeded === true);
-        const result = allNeedTransport ? transportFee : 0;
-        this.total = this.total + result
-        return result
-      }
-      ,
-      calculateTechnicianAllowanceTotal(items) {
-        return items.reduce((total, item) => {
-          this.total = this.total + total + (item.numberOfTechnicians * item.technicianAllowance);
-          return total + (item.numberOfTechnicians * item.technicianAllowance);
-        }, 0);
+        return allNeedTransport ? transportFee : 0;
       },
 
+      calculateTechnicianAllowanceTotal(items) {
+        return items.reduce((sum, item) => sum + item.numberOfTechnicians * item.technicianAllowance, 0);
+      },
 
       calculateTotals(items) {
-        let grandTotal = 0;
-
-        items.forEach(item => {
-          grandTotal += item.price * item.quantity;
-        });
-        this.total = this.total + grandTotal
-        return grandTotal;
+        return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
       },
       async refresh() {
         await window.location.reload();
@@ -330,7 +323,7 @@
         const wrapper = document.getElementById("wrapper");
         if (wrapper) {
           this.form.equipmentSetId = this.id
-          let result = await makePayment(this.form); // Payment initialization
+          let result = await makePayment(this.form, this.totalCost); // Payment initialization
           window.location.href = result.checkout_url;
         } else {
           console.warn("Wrapper not found.");

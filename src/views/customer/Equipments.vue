@@ -120,7 +120,6 @@
       }
     },
     methods: {
-
       async fetchEquipments() {
         this.loading = true;
         try {
@@ -130,12 +129,12 @@
           // Normalize data
           this.equipments = dbEquipments.map(item => ({
             id: item.id,
-            transportNeeded: item.transportNeeded || false,
-            technicianAllowance: item.technicianAllowance || false,
-            numberOfTechnicians: item.numberOfTechnicians || 0,
             name: item.name,
-            category: item.category, // optionally map ID to name
+            category: item.category,
             image: item.pictures[0] || '/equips/default.jpg',
+            numberOfTechnicians: item.numberOfTechnicians || 0,
+            technicianAllowance: item.technicianAllowance || 0,
+            transportNeeded: item.transportNeeded || false,
             price: item.bookingCost || '0',
             availability: item.availability || '',
             selected: false,
