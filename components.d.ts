@@ -10,7 +10,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     AddEquipmentSetItems: typeof import('./src/components/AddEquipmentSetItems.vue')['default']
     AppFooter: typeof import('./src/components/AppFooter.vue')['default']
-    copy: typeof import('./src/components/Home copy.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Home: typeof import('./src/components/Home.vue')['default']
