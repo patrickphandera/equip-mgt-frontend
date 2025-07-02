@@ -120,6 +120,7 @@
       }
     },
     methods: {
+
       async fetchEquipments() {
         this.loading = true;
         try {
@@ -129,6 +130,9 @@
           // Normalize data
           this.equipments = dbEquipments.map(item => ({
             id: item.id,
+            transportNeeded: item.transportNeeded || false,
+            technicianAllowance: item.technicianAllowance || false,
+            numberOfTechnicians: item.numberOfTechnicians || 0,
             name: item.name,
             category: item.category, // optionally map ID to name
             image: item.pictures[0] || '/equips/default.jpg',

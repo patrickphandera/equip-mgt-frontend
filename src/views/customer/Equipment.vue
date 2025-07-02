@@ -1,5 +1,6 @@
 <template>
   <v-app>
+
     <div class="mt-2 scroll-container">
       <div class="d-flex justify-space-between align-center">
         <!-- {{`${API_BASE_URL}/files/${i.pictures[0]}`}} -->
@@ -11,6 +12,7 @@
         </div>
         <v-btn icon="mdi-unfold-more-horizontal" variant="dense">2/3</v-btn>
       </div>
+
       <v-row fill class="mt-2">
         <v-col :cols="12 / selectedEquipments.length" v-for="(i, index) in selectedEquipments" :key="index"
           v-show="i?.selected">
@@ -49,15 +51,15 @@
                     Equipment Sets Cost:
                   </div>
                   <div class="ml-2 text-caption  rounded-lg">
-                    1 Sets X 20.00 MWK = 20.00 MWK
+                    {{calculateTotals(selectedEquipments)}} MWK
                   </div>
                 </div>
                 <div class="d-flex">
                   <div class="text-caption font-weight-medium">
-                    Tranport Cost:
+                    Transport Cost:
                   </div>
                   <div class="ml-2 text-caption    rounded-lg">
-                    1 Day X 1 Sets X 20.00 MWK = 20.00 MWK
+                    {{calculateTransportFee(selectedEquipments)}}
                   </div>
                 </div>
                 <div class="d-flex">
@@ -65,12 +67,14 @@
                     Technician Allowance:
                   </div>
                   <div class="ml-2 text-caption rounded-lg">
-                    1 Day X 1 Sets X 20.00 MWK = 20.00 MWK
+                    {{calculateTechnicianAllowanceTotal(selectedEquipments)}} MWK
                   </div>
                 </div>
                 <div class="d-flex">
                   <div class="text-overline  font-weight-medium">
-                    TOTAL COST:
+                    TOTAL
+                    COST:{{calculateTotals(selectedEquipments)+calculateTransportFee(selectedEquipments)+calculateTechnicianAllowanceTotal(selectedEquipments)}}
+                    MWK
                   </div>
                 </div>
               </div>
@@ -190,6 +194,7 @@
         locationNames: [],
         mapData: {},
         locations: [],
+        total: 0,
         route, id,
         mapVisible: false,
         formValid: false,
@@ -263,6 +268,33 @@
     }
     ,
     methods: {
+      calculateTransportFee(items) {
+        const locationObj = this.locations.find(loc => loc.name === this.form.location);
+        if (!locationObj) return 0;
+        const transportFee = locationObj.transportFee;
+        const allNeedTransport = items.every(item => item.transportNeeded === true);
+        const result = allNeedTransport ? transportFee : 0;
+        this.total = this.total + result
+        return result
+      }
+      ,
+      calculateTechnicianAllowanceTotal(items) {
+        return items.reduce((total, item) => {
+          this.total = this.total + total + (item.numberOfTechnicians * item.technicianAllowance);
+          return total + (item.numberOfTechnicians * item.technicianAllowance);
+        }, 0);
+      },
+
+
+      calculateTotals(items) {
+        let grandTotal = 0;
+
+        items.forEach(item => {
+          grandTotal += item.price * item.quantity;
+        });
+        this.total = this.total + grandTotal
+        return grandTotal;
+      },
       async refresh() {
         await window.location.reload();
 
