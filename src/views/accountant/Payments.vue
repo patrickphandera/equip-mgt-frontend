@@ -8,9 +8,9 @@
             Payments management
           </div>
         </div>
-        <v-btn color="primary" class="text-capitalize text-overline" prepend-icon="mdi-plus" @click="createPayment">
+        {/* <v-btn color="primary" class="text-capitalize text-overline" prepend-icon="mdi-plus" @click="createPayment">
           New Payment
-        </v-btn>
+        </v-btn> */}
       </div>
 
       <v-card class="elevation-1 mt-4">
