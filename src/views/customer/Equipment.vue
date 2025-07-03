@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    {{totalCost }}
     <div class="mt-2 scroll-container">
       <div class="d-flex justify-space-between align-center">
         <!-- {{`${API_BASE_URL}/files/${i.pictures[0]}`}} -->
