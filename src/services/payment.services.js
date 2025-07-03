@@ -8,7 +8,6 @@ token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImZpcnN0bmFtZSI6IlBhdH
 export default async function makePayment(data) {
   try {
 
-
     const id = uuidv4();
     const email = 'patrickphandera@gmail.com';
     const first_name = 'patrick';

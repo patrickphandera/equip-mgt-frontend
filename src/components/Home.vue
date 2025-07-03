@@ -4,7 +4,7 @@
       <Marker v-if="selectedPosition" :options="{ position: selectedPosition }" />
     </GoogleMap>
 
-    <v-dialog v-model="dialog" max-width="300">
+    <!-- <v-dialog v-model="dialog" max-width="300">
       <v-card class="pa-2">
         <div class="font-weight-bold  text-h6">Location details</div>
 
@@ -16,7 +16,7 @@
           <v-btn class="bg-grey-lighten-1 text-capitalize" @click="dialog = false">Close</v-btn>
         </v-card-actions>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
 
   </div>
 </template>

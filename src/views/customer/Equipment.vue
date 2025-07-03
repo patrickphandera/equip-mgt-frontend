@@ -1,11 +1,12 @@
 <template>
   <v-app>
+
     <div class="mt-2 scroll-container">
       <div class="d-flex justify-space-between align-center">
         <!-- {{`${API_BASE_URL}/files/${i.pictures[0]}`}} -->
-
+        {{countTransportNeeded}}
         <div class="d-flex">
-          <v-btn class="border elevation-0" @click="refresh()"><v-icon>mdi-keyboard-backspace</v-icon></v-btn>
+          <v-btn class="border elevation-0" @click="sendMessage()"><v-icon>mdi-keyboard-backspace</v-icon></v-btn>
           <div class="font-weight-medium mx-2 text-overline">Selected Equipments</div>
 
         </div>
@@ -13,8 +14,7 @@
       </div>
 
       <v-row fill class="mt-2">
-        <v-col :cols="12 / selectedEquipments.length" v-for="(i, index) in selectedEquipments" :key="index"
-          v-show="i?.selected">
+        <v-col :cols="4" v-for="(i, index) in selectedEquipments" :key="index" v-show="i?.selected">
           <v-card class="elevation-0 selected mx-auto">
             <v-img class="align-center pb-10" height="150px" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
               :src="`${API_BASE_URL}/files/${i?.image}`" cover>
@@ -50,7 +50,7 @@
                     Equipment Sets Cost:
                   </div>
                   <div class="ml-2 text-caption  rounded-lg">
-                    {{calculateTotals(selectedEquipments)}} MWK
+                    {{calculateTotalPrice(equipments)*(form.numberOfDays?Number(form.numberOfDays):1)}} MWK
                   </div>
                 </div>
                 <div class="d-flex">
@@ -58,7 +58,8 @@
                     Transport Cost:
                   </div>
                   <div class="ml-2 text-caption    rounded-lg">
-                    {{calculateTransportFee(selectedEquipments)}}
+                    {{countTransportNeeded * getTransportFee
+                    *(form.transportNeeded=='Yes'?1:0)*(form.numberOfDays?Number(form.numberOfDays):1) }} MWK
                   </div>
                 </div>
                 <div class="d-flex">
@@ -66,7 +67,8 @@
                     Technician Allowance:
                   </div>
                   <div class="ml-2 text-caption rounded-lg">
-                    {{calculateTechnicianAllowanceTotal(selectedEquipments)}} MWK
+                    {{calculateTechnicianAllowanceTotal(selectedEquipments)*(form.numberOfDays?Number(form.numberOfDays):1)}}
+                    MWK
                   </div>
                 </div>
                 <div class="d-flex">
@@ -130,8 +132,8 @@
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer />
-                    <v-btn text @click="mapVisible = false">Close</v-btn>
-                    <v-btn color="primary" @click="mapVisible = false">Select</v-btn>
+                    <v-btn text @click="mapVisible = false" class="text-capitalize">Close</v-btn>
+                    <v-btn color="primary" class="text-capitalize" @click="mapVisible = false">Select</v-btn>
                   </v-card-actions>
                 </v-card>
               </v-dialog>
@@ -170,6 +172,8 @@
   import { getAllData, postData, putData, deleteData } from "../../services/rest.services";
 
   export default {
+
+    emits: ['update-message'],
     props: {
       equipments: {
         type: Array,
@@ -226,11 +230,21 @@
       };
     },
     computed: {
+      countTransportNeeded() {
+        return this.selectedEquipments.filter(item => item.transportNeeded).length;
+      },
+      getTransportFee() {
+        const location = this.locations.find(
+          loc => loc.name === this.form.location
+        );
+        return location?.transportFee || 0;
+      },
+
       totalCost() {
         const equipmentTotal = this.calculateTotals(this.selectedEquipments);
-        const transportFee = this.calculateTransportFee(this.selectedEquipments);
+        const transportFee = this.countTransportNeeded * this.getTransportFee * (this.form.transportNeeded == 'Yes' ? 1 : 0)
         const technicianAllowance = this.calculateTechnicianAllowanceTotal(this.selectedEquipments);
-        return Number(equipmentTotal) + Number(transportFee) + Number(technicianAllowance);
+        return (Number(equipmentTotal) + Number(transportFee) + Number(technicianAllowance)) * (this.form.numberOfDays ? Number(this.form.numberOfDays) : 1);
       },
       selectedEquipments() {
         return this.equipments.filter(e => e?.selected);
@@ -265,6 +279,24 @@
     }
     ,
     methods: {
+      calculateTotalPrice(items) {
+        let total = 0;
+        if (!Array.isArray(items)) {
+          console.error("Expected an array but got:", typeof items, items);
+          return 0;
+        }
+        this.selectedEquipments.forEach(item => {
+          if (item.selected) {
+            const subtotal = item.price;
+            total += subtotal;
+          }
+        });
+
+        return total;
+      },
+      sendMessage() {
+        this.$emit('update-message', true)
+      },
       calculateTransportFee(items) {
         const locationObj = this.locations.find(loc => loc.name === this.form.location);
         if (!locationObj) return 0;

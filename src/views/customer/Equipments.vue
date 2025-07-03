@@ -57,49 +57,53 @@
           </template>
         </v-dialog>
       </div>
+      <div class="scroll-box">
 
-      <v-row class="mt-4">
-        <v-col cols="6" v-for="equipment in equipments" :key="equipment.id">
-          <v-card hover class="  mx-auto" :class="{ selected: equipment.selected }" @click="toggleSelection(equipment)">
-            <v-img class="align-end" :style="{ height: equipment.selected ? '100px' : '180px' }"
-              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" :src="`${API_BASE_URL}/files/${equipment.image}`"
-              cover>
-              <div class="mt-8 d-flex justify-center">
 
-                <div class="d-flex justify-space-between text-body-2 font-weight-black">
-                  <v-btn
-                    class="text-uppercase ma-2 bg-black pa-1 rounded-lg font-weight-black text-white px-4 py-2 text-overline">
 
-                    {{equipment.name}}
+
+        <v-row class="mt-4 scroll-content ">
+
+          <v-col cols="6" md="4" v-for="equipment in equipments" :key="equipment.id">
+            <v-card hover class="  mx-auto" :class="{ selected: equipment.selected }"
+              @click="toggleSelection(equipment)">
+              <v-img class="align-end" :style="{ height: equipment.selected ? '177px' : '180px' }"
+                gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" :src="`${API_BASE_URL}/files/${equipment.image}`"
+                cover>
+                <div class="mt-8 d-flex justify-center">
+
+                  <div class="d-flex justify-space-between text-body-2 font-weight-black">
+                    <v-btn
+                      class="text-uppercase ma-2 bg-black pa-1 rounded-lg font-weight-black text-white px-4 py-2 text-overline">
+
+                      {{equipment.name}}
+                    </v-btn>
+                  </div>
+                </div>
+                <div class="d-flex pa-2 justify-center">
+                  <v-btn stacked class="bg-green-darken-4 d-flex">
+
+                    <div class="text-caption">MWK</div>
+
+                    <div class="text-body-4 font-weight-black">{{ equipment.price }}.00</div>
                   </v-btn>
                 </div>
-              </div>
-              <div class="d-flex pa-2 justify-center">
-                <v-btn stacked class="bg-green-darken-4 d-flex">
+              </v-img>
 
-                  <div class="text-caption">MWK</div>
-
-                  <div class="text-body-4 font-weight-black">{{ equipment.price }}.00</div>
-                </v-btn>
-              </div>
-            </v-img>
-            <div @click.stop>
-              <v-select density="compact" v-if="equipment.selected" dense :label="`Qty of ${ equipment.name }`"
-                :items="['1', '2']" v-model="equipment.quantity" class="px-4 mt-4  text-caption text-capitalize" />
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-
-      <div class="d-flex justify-end mt-4" v-if="toggle">
-        <v-btn class="bg-green text-capitalize" append-icon="mdi-chevron-right" @click="showSelect = false;next()">
-          next
-        </v-btn>
+            </v-card>
+          </v-col>
+        </v-row>
+        <div class="d-flex justify-end">
+          <v-btn class="bg-green text-capitalize" append-icon="mdi-chevron-right" @click="showSelect = false;next()">
+            next
+          </v-btn>
+        </div>
       </div>
+
     </div>
 
     <div v-show="!showSelect">
-      <Inputs :back="goBackToSelection" :equipments="equipments" />
+      <Inputs :back="goBackToSelection" :equipments="equipments" @update-message="showSelect = $event" />
     </div>
   </v-app>
 </template>
@@ -235,6 +239,17 @@
 </script>
 
 
+<style scoped>
+  .scroll-box {
+    height: 500px;
+    overflow-y: auto;
+
+  }
+
+  .scroll-content {
+    padding: 10px;
+  }
+</style>
 
 
 
