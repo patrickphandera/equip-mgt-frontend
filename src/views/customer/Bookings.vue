@@ -98,8 +98,8 @@
 
       <v-card class="elevation-1 mt-4 px-4">
 
-        <v-text-field v-model="search" label="Search bookings"  density="compact"
-          prepend-inner-icon="mdi-magnify" clearable class="mt-4 text-caption" />
+        <v-text-field v-model="search" label="Search bookings" density="compact" prepend-inner-icon="mdi-magnify"
+          clearable class="mt-4 text-caption" />
 
         <v-data-table-server class="text-caption" v-model:items-per-page="itemsPerPage" :headers="headers"
           :items="serverItems" :items-length="totalItems" :loading="loading" :search="search" item-value="customer_id"

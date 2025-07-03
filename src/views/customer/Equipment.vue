@@ -1,6 +1,6 @@
 <template>
   <v-app>
-
+    {{totalCost }}
     <div class="mt-2 scroll-container">
       <div class="d-flex justify-space-between align-center">
         <!-- {{`${API_BASE_URL}/files/${i.pictures[0]}`}} -->
@@ -199,14 +199,7 @@
         mapVisible: false,
         formValid: false,
         form: {
-          numberOfDays: "1",
-          equipmentSetId: "",
-          district: "Mzimba",
-          location: "Mzuzu City Centre",
-          date: "",
-          phone: "",
-          transportNeeded: "No",
-          name: ""
+
         },
         rules: {
           required: (v) => !!v || "Field is required",
@@ -238,7 +231,7 @@
         const equipmentTotal = this.calculateTotals(this.selectedEquipments);
         const transportFee = this.calculateTransportFee(this.selectedEquipments);
         const technicianAllowance = this.calculateTechnicianAllowanceTotal(this.selectedEquipments);
-        return equipmentTotal + transportFee + technicianAllowance;
+        return Number(equipmentTotal) + Number(transportFee) + Number(technicianAllowance);
       },
       selectedEquipments() {
         return this.equipments.filter(e => e?.selected);
@@ -294,6 +287,8 @@
       },
       async getMapData(data) {
         this.mapData = data
+        this.mapData.selectedAddress = data.selectedAddress;
+        console.log('Map data received:', data);
 
       },
       async getLocations() {
@@ -323,8 +318,19 @@
         const wrapper = document.getElementById("wrapper");
         if (wrapper) {
           this.form.equipmentSetId = this.id
-          let result = await makePayment(this.form, this.totalCost); // Payment initialization
-          window.location.href = result.checkout_url;
+          this.form.amount = this.totalCost
+          this.form.lat = this.mapData.lat;
+          this.form.lng = this.mapData.long;
+          this.form.equipments = this.equipments
+          this.form.selectedAddress = this.mapData.selectedAddress;
+          this.form.location = this.form.location || this.actualLocation;
+          this.form.district = this.form.district || 'Mzimba';
+          this.form.description = this.form.description || '';
+          this.form.phone = this.form.phone;
+          const result = await makePayment(this.form); // Payment initialization
+          console.log("Payment result:", result.data.checkout_url);
+
+          window.location.href = result.data.checkout_url;
         } else {
           console.warn("Wrapper not found.");
         }
