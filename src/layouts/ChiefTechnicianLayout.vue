@@ -9,8 +9,8 @@
       </div>
 
       <v-list class="mx-4 " density="comfortable">
-        <v-list-item to="/chief-technician" title="" class="my-3 text-overline" @focus="focusedItem = 'home'"
-          @blur="focusedItem = null" :class="isActiveRoute('/chief-technician') ">
+        <v-list-item to="/chief-technician/dashboard" title="" class="my-3 text-overline" @focus="focusedItem = 'home'"
+          @blur="focusedItem = null" :class="isActiveRoute('/chief-technician/dashboard') ">
           Dashboard
           <template v-slot:prepend>
             <v-icon color="gray">mdi-view-dashboard</v-icon>
