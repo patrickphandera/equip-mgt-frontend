@@ -27,18 +27,39 @@
             <span class="mx-4 text-black ">'<span>Audio</span><span class="text-green">Visual'</span></span>
           </div>
           <transition name="fade">
-            <h5 class=" mt-5 text-overline text-black">
+            <h5 class=" mt-2 text-overline text-black">
               A streamlined platform by the Ministry of Information for reserving media and communication equipment.
             </h5>
           </transition>
           <div>
-            <v-btn to="/equipments" append-icon="mdi-unfold-more-horizontal"
-              class="mt-4 text-black text-body-4 text-uppercase" color="green" large text="Explore our Equipments" />
+            <v-btn to="/equipments" append-icon="mdi-unfold-more-horizontal" color='green'
+              class=" text-black text-body-4 text-uppercase mt-4 " large text="Explore our Equipments" />
           </div>
         </v-col>
       </v-row>
     </v-container>
 
+
+    <v-row class="mx-4">
+      <v-col cols=4>
+        <v-card style="background: linear-gradient(to bottom right,green,white); padding: 1rem; border-radius: 12px;"
+          hover class="text-center text-h4 d-flex flex-column justify-center font-weight-medium" height='100px'>
+          RELIABLE
+        </v-card>
+      </v-col>
+      <v-col cols=4>
+        <v-card style="background: linear-gradient(to bottom right,white, green); padding: 1rem; border-radius: 12px;"
+          hover class="text-center text-h4 d-flex flex-column justify-center font-weight-medium" height='100px'>
+          HIGH QUALITY
+        </v-card>
+      </v-col>
+      <v-col cols=4>
+        <v-card style="background: linear-gradient(to bottom right,green, white); padding: 1rem; border-radius: 12px;"
+          hover class="text-center text-h4 d-flex flex-column justify-center font-weight-medium" height='100px'>
+          AFFORDABLE
+        </v-card>
+      </v-col>
+    </v-row>
     <!-- Footer -->
     <v-app-bar dense location="bottom" class="text-center border" elevation="1">
       <v-container class="d-flex justify-center align-center">
