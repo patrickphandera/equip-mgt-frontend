@@ -10,6 +10,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     AddEquipmentSetItems: typeof import('./src/components/AddEquipmentSetItems.vue')['default']
     AppFooter: typeof import('./src/components/AppFooter.vue')['default']
+    ChartComponent: typeof import('./src/components/ChartComponent.vue')['default']
+    ChiefTechnicianEquipmentsBarChart: typeof import('./src/components/ChiefTechnicianEquipmentsBarChart.vue')['default']
+    ChiefTechnicianLocationsBarChart: typeof import('./src/components/ChiefTechnicianLocationsBarChart.vue')['default']
+    ChiefTechnicianYearlyBarChart: typeof import('./src/components/ChiefTechnicianYearlyBarChart.vue')['default']
     copy: typeof import('./src/components/Home copy.vue')['default']
     DestinationLocation: typeof import('./src/components/DestinationLocation.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
@@ -20,5 +24,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UpdateEquipmentSet: typeof import('./src/components/UpdateEquipmentSet.vue')['default']
+    YearlyTotalBookings: typeof import('./src/components/YearlyTotalBookings.vue')['default']
   }
 }
