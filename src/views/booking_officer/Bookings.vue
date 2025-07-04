@@ -5,7 +5,7 @@
       <!-- Title -->
       <div class="d-flex justify-space-between align-center mb-4">
         <div>
-          <h2 class="text-h5 font-weight-medium">Bookings</h2>
+          <h2 class="text-overline font-weight-medium">Bookings</h2>
           <div class="text-caption">Manage all bookings</div>
         </div>
         <v-btn color="green" variant="elevated" prepend-icon="mdi-plus" class="text-capitalize text-caption"

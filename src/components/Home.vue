@@ -1,22 +1,7 @@
 <template>
   <div>
     <GoogleMap :api-key="apiKey" :center="center" :zoom="14" style="height: 430px; width: 1200" @click="handleMapClick">
-      <Marker v-if="selectedPosition" :options="{ position: selectedPosition }" />
     </GoogleMap>
-
-    <!-- <v-dialog v-model="dialog" max-width="300">
-      <v-card class="pa-2">
-        <div class="font-weight-bold  text-h6">Location details</div>
-
-        <div><strong>Address:</strong> {{ selectedAddress }}</div>
-        <div><strong>It is found in:</strong> {{ localAreaName }}</div>
-
-        <v-card-actions>
-          <v-spacer />
-          <v-btn class="bg-grey-lighten-1 text-capitalize" @click="dialog = false">Close</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog> -->
 
   </div>
 </template>

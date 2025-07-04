@@ -3,8 +3,8 @@
     <div class="mt-2">
       <div class="d-flex justify-space-between align-center">
         <div class="d-flex flex-column">
-          <h2 class="text-h5 font-weight-medium">Locations</h2>
-          <div class="">
+          <h2 class="text-overline font-weight-medium">Locations</h2>
+          <div class="text-caption">
             Locations management
           </div>
         </div>
