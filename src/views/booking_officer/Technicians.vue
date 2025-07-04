@@ -5,9 +5,9 @@
 
             <div class="d-flex justify-space-between align-end mt-2">
                 <div class="d-flex flex-column">
-                    <h2 class="text-overline font-weight-medium">Users</h2>
+                    <h2 class="text-overline font-weight-medium">Technicians</h2>
                     <div class="text-caption">
-                        Technicians Management
+                        Technician Schedules Management
                     </div>
                 </div>
                 <div class="px-4 text-center">
@@ -15,7 +15,7 @@
                         <template v-slot:activator="{ props }">
                             <v-btn color="green" variant="elevated" prepend-icon="mdi-plus"
                                 class="text-capitalize text-caption" v-bind="props" @click="resetForm">
-                                New Technician
+                                New Schedule
                             </v-btn>
                         </template>
 

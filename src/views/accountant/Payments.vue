@@ -10,10 +10,7 @@
       <!-- Add Payment -->
       <div class="px-4 text-center">
         <v-dialog v-model="createDialog" max-width="800">
-
-         
-
-          <v-card title="Add New Payment">
+ <v-card title="Add New Payment">
             <v-form class="px-4">
               <v-row>
                 <v-col cols="12" sm="6"><v-text-field label="Transaction Ref" v-model="form.tx_ref" required /></v-col>

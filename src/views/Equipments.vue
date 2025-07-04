@@ -29,7 +29,7 @@
       <div>
         <v-row class="mt-2">
           <v-col cols="6" v-for="equipment in equipments" :key="equipment.id">
-            <v-card hover class="  mx-auto" @click=" toggleSelection(equipment)">
+            <v-card hover class="  mx-auto" @click=" toggleSelection(equipment)" to='/login'>
               <v-img class="align-end" style="height: 180px;" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                 :src="`${API_BASE_URL}/files/${equipment.image}`" cover>
                 <div class="mt-8 d-flex justify-center">
@@ -38,7 +38,7 @@
                     <v-btn
                       class="text-uppercase ma-2 bg-black pa-1 rounded-lg font-weight-black text-white px-4 py-2 text-overline">
 
-                      {{equipment.name}}
+                      {{ equipment.name }}
                     </v-btn>
                   </div>
                 </div>
@@ -58,7 +58,7 @@
       </div>
     </v-container>
 
-    <!-- Footer -->
+
     <v-app-bar dense location="bottom" class="text-center border" elevation="1">
       <v-container class="d-flex justify-center align-center">
         <div class="text-caption">&copy; Ministry of Information</div>

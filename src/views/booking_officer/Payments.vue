@@ -10,12 +10,7 @@
       <!-- Add Payment -->
       <div class="px-4 text-center">
         <v-dialog v-model="createDialog" max-width="800">
-          <template v-slot:activator="{ props }">
-            <v-btn color="green" variant="elevated" prepend-icon="mdi-plus" class="text-capitalize text-caption"
-              v-bind="props" @click="resetForm">
-              New Payment
-            </v-btn>
-          </template>
+         
           <v-card title="Add New Payment">
             <v-form class="px-4">
               <v-row>

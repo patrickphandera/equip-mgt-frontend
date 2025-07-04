@@ -4,7 +4,6 @@
     <div class="mt-2 scroll-container">
       <div class="d-flex justify-space-between align-center">
         <!-- {{`${API_BASE_URL}/files/${i.pictures[0]}`}} -->
-        {{countTransportNeeded}}
         <div class="d-flex">
           <v-btn class="border elevation-0" @click="sendMessage()"><v-icon>mdi-keyboard-backspace</v-icon></v-btn>
           <div class="font-weight-medium mx-2 text-overline">Selected Equipments</div>
