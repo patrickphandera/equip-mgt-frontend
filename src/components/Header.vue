@@ -26,12 +26,12 @@
             </template>
 
             <v-list>
-              <v-list-item class="border-b " block>
+              <v-list-item class="border-b " block to='/customer/account'>
                 <div class=" "><v-btn color="" class="text-overline elevation-1 border">User
                     details</v-btn></div>
               </v-list-item>
               <v-list-item>
-                <v-btn color="red" block class="text-overline">Logout</v-btn>
+                <v-btn color="red" block class="text-overline" to='/login'>Logout</v-btn>
               </v-list-item>
 
             </v-list>
