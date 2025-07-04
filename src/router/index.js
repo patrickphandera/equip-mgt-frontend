@@ -90,14 +90,14 @@ const routes = [
     component: () => import('@/layouts/ChiefTechnicianLayout.vue'),
     children: [
       {
-        path: '',
+        path: 'dashboard',
         name: 'BookingOfficerDashboard',
         component: () => import('@/views/booking_officer/Home.vue'),
         meta: { requiresAuth: true },
       },
       {
         path: '',
-        redirect: 'dashboard',
+        redirect: 'chief-technician/dashboard',
       },
       {
         path: 'equipments',
